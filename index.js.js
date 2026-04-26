@@ -54,14 +54,17 @@ if (!eventName) {
             event_name: eventName,
             event_time: Math.floor(Date.now() / 1000),
             event_id: eventId,
-
+            event_source_url: "https://khalijimart.com",
+            action_source: "website",
+            test_event_code: "TEST12345",
+        
             user_data: {
               ph: hashedPhone ? [hashedPhone] : undefined
             },
-
+        
             custom_data: {
               value: Number(value),
-              currency: currency,
+              currency: "SAR",
               content_type: "product"
             }
           }
