@@ -56,7 +56,6 @@ if (!eventName) {
             event_id: eventId,
             event_source_url: "https://khalijimart.com",
             action_source: "website",
-            test_event_code: "TEST12345",
         
             user_data: {
               ph: hashedPhone ? [hashedPhone] : undefined
@@ -68,10 +67,11 @@ if (!eventName) {
               content_type: "product"
             }
           }
-        ]
+        ],
+        test_event_code: "TEST12345"
       }
     );
-
+    
     console.log(`✅ ${eventName} sent:`, eventId);
 
     res.sendStatus(200);
