@@ -68,7 +68,6 @@ if (!eventName) {
             }
           }
         ],
-        test_event_code: "TEST12345"
       }
     );
     
