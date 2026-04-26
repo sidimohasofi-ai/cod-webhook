@@ -18,10 +18,20 @@ app.post('/webhook-codnetwork', async (req, res) => {
   try {
     const data = req.body;
 
-    // ✅ 1. ONLY DELIVERED
-    if (data.status !== "delivered") {
-      return res.sendStatus(200);
-    }
+    // ✅ 1. ONLY DELIVERED or CONFIRMED
+  let eventName = null;
+
+  if (data.status === "confirmed") {
+    eventName = "InitiateCheckout";
+  }
+
+  if (data.status === "delivered") {
+    eventName = "Purchase";
+  }
+
+if (!eventName) {
+  return res.sendStatus(200);
+}
 
     // ✅ 2. EXTRACT DATA FROM YOUR STRUCTURE
     const eventId = data.lead_id || data.reference || data.id;
@@ -41,7 +51,7 @@ app.post('/webhook-codnetwork', async (req, res) => {
       {
         data: [
           {
-            event_name: "Purchase",
+            event_name: eventName,
             event_time: Math.floor(Date.now() / 1000),
             event_id: eventId,
 
