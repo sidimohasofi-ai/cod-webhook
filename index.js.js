@@ -60,15 +60,16 @@ if (!eventName) {
             },
 
             custom_data: {
-              value: value,
-              currency: currency
+              value: Number(value),
+              currency: currency,
+              content_type: "product"
             }
           }
         ]
       }
     );
 
-    console.log("✅ Purchase sent:", eventId);
+    console.log(`✅ ${eventName} sent:`, eventId);
 
     res.sendStatus(200);
 
